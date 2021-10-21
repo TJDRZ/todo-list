@@ -1,8 +1,8 @@
 import { createProject } from './creation';
 import { projectListItem, todoItem } from './UI';
 
-//grand project array
-var projectFolder = [];
+// grand project array
+let projectFolder = [];
 
 const projectAdd = (project) => projectFolder.push(project);
 
@@ -11,8 +11,8 @@ const projectRemove = (project) => {
   projectFolder.splice(index, 1);
 };
 
-//current project
-var currentProject = createProject('currentProject');
+// current project
+let currentProject = createProject('currentProject');
 
 const setCurrentProject = (project) => (currentProject = project);
 
@@ -23,22 +23,22 @@ const removeTodoFromCurrentProject = (todo) => {
   currentProject.todos.splice(index, 1);
 };
 
-//Save
+// Save
 const save = (projectFolder) => {
   localStorage.setItem('projectFolder', JSON.stringify(projectFolder));
 };
 
-//Retrieve
+// Retrieve
 const retrieveSave = () => {
-  var savedProjectFolder = localStorage.getItem('projectFolder');
+  const savedProjectFolder = localStorage.getItem('projectFolder');
   if (savedProjectFolder && savedProjectFolder.length) {
     projectFolder = JSON.parse(savedProjectFolder);
     if (projectFolder.length >= 1) {
-      //load all projects
+      // load all projects
       for (let i = 0; i < projectFolder.length; i++) {
         projectListItem(projectFolder[i]);
       }
-      //just make todo container show the last project loaded's todos and select it as current project
+      // just make todo container show the last project loaded's todos and select it as current project
       for (
         let i = 0;
         i < projectFolder[projectFolder.length - 1].todos.length;

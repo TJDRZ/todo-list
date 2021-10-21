@@ -10,19 +10,19 @@ import {
   setCurrentProject,
 } from './projects';
 
-//dynamically change todo container contents on different project selection
+// dynamically change todo container contents on different project selection
 const dynamicTodoContainer = (project) => {
-  //clear container
+  // clear container
   while (todoContainer.firstElementChild) {
     todoContainer.removeChild(todoContainer.firstElementChild);
   }
-  //fill container
+  // fill container
   for (let i = 0; i < project.todos.length; i++) {
     todoItem(project.todos[i]);
   }
 };
 
-//set active project list item
+// set active project list item
 const setActiveLi = (li) => {
   li.classList.add('selected');
 };
@@ -33,7 +33,7 @@ const resetActiveLi = () => {
   });
 };
 
-//Projects
+// Projects
 const newProjectButton = document.querySelector('#project-button');
 const projectList = document.querySelector('#project-list');
 const projectForm = document.querySelector('#project-form');
@@ -68,7 +68,7 @@ const projectListItem = (project) => {
   projectDelete.classList.add('project-delete');
   projectDelete.textContent = 'DEL';
   projectDelete.addEventListener('click', () => {
-    //dynamicCurrentProject(project, newProjectListItem);
+    // dynamicCurrentProject(project, newProjectListItem);
     projectRemove(project);
     projectList.removeChild(newProjectListItem);
     save(projectFolder);
@@ -77,7 +77,7 @@ const projectListItem = (project) => {
   projectList.appendChild(newProjectListItem);
 };
 
-//Todos
+// Todos
 const newTodoButton = document.querySelector('#todo-button');
 const todoContainer = document.querySelector('#todo-container');
 const todoForm = document.querySelector('#todo-form');
@@ -94,17 +94,17 @@ todoFormSubmit.addEventListener('click', () => {
     document.querySelector('#title').value,
     document.querySelector('#description').value,
     document.querySelector('#due-date').value
-  ); //aka everything in the todo form
+  ); // aka everything in the todo form
   todoItem(todo);
   addTodoToCurrentProject(todo);
   save(projectFolder);
 });
 
 const todoItem = (todo) => {
-  //card
+  // card
   const newTodoCard = document.createElement('div');
   newTodoCard.classList.add('todo');
-  //delete button
+  // delete button
   const todoDelete = document.createElement('button');
   todoDelete.classList.add('todo-delete');
   todoDelete.textContent = 'X';
@@ -114,7 +114,7 @@ const todoItem = (todo) => {
     save(projectFolder);
   });
   newTodoCard.appendChild(todoDelete);
-  //title
+  // title
   const todoTitle = document.createElement('h4');
   todoTitle.textContent = todo.title;
   if (todo.complete == true) {
@@ -131,7 +131,7 @@ const todoItem = (todo) => {
     save(projectFolder);
   });
   newTodoCard.appendChild(todoTitle);
-  //priority
+  // priority
   const todoPriority = document.createElement('button');
   todoPriority.classList.add('todo-priority-button');
   if (todo.priority == true) {
@@ -154,7 +154,7 @@ const todoItem = (todo) => {
     save(projectFolder);
   });
   newTodoCard.appendChild(todoPriority);
-  //description
+  // description
   const todoDescription = document.createElement('button');
   todoDescription.classList.add('description');
   todoDescription.textContent = 'Description';
@@ -162,24 +162,24 @@ const todoItem = (todo) => {
     alert(todo.description);
   });
   newTodoCard.appendChild(todoDescription);
-  //duedate
+  // duedate
   const todoDueDate = document.createElement('h5');
   todoDueDate.textContent = todo.dueDate;
   newTodoCard.appendChild(todoDueDate);
-  //card
+  // card
   todoContainer.appendChild(newTodoCard);
 };
 
-//Default starting project & todos using the same processes as above
+// Default starting project & todos using the same processes as above
 const defaultStart = () => {
-  //default project set up
+  // default project set up
   const defaultProject = createProject('Default Project');
   projectListItem(defaultProject);
   projectAdd(defaultProject);
   setCurrentProject(defaultProject);
 
-  //default todos set up
-  //1
+  // default todos set up
+  // 1
   const defaultTodoOne = createTodo(
     true,
     'Default Todo #1',
@@ -188,7 +188,7 @@ const defaultStart = () => {
   );
   todoItem(defaultTodoOne);
   addTodoToCurrentProject(defaultTodoOne);
-  //2
+  // 2
   const defaultTodoTwo = createTodo(
     false,
     'Default Todo #2',
