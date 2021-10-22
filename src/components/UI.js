@@ -66,7 +66,7 @@ const projectListItem = (project) => {
   });
   const projectDelete = document.createElement('button');
   projectDelete.classList.add('project-delete');
-  projectDelete.textContent = 'DEL';
+  projectDelete.textContent = 'X';
   projectDelete.addEventListener('click', () => {
     // dynamicCurrentProject(project, newProjectListItem);
     projectRemove(project);
@@ -115,13 +115,13 @@ const todoItem = (todo) => {
   });
   newTodoCard.appendChild(todoDelete);
   // title
-  const todoTitle = document.createElement('h4');
+  const todoTitle = document.createElement('h2');
   todoTitle.textContent = todo.title;
-  if (todo.complete == true) {
+  if (todo.complete === true) {
     todoTitle.style.textDecoration = 'line-through';
   }
   todoTitle.addEventListener('click', () => {
-    if (todo.complete == false) {
+    if (todo.complete === false) {
       todoTitle.style.textDecoration = 'line-through';
       complete(todo);
     } else {
@@ -134,7 +134,7 @@ const todoItem = (todo) => {
   // priority
   const todoPriority = document.createElement('button');
   todoPriority.classList.add('todo-priority-button');
-  if (todo.priority == true) {
+  if (todo.priority === true) {
     todoPriority.style.backgroundColor = 'red';
     todoPriority.textContent = 'HIGH PRIORITY!';
   } else {
@@ -142,7 +142,7 @@ const todoItem = (todo) => {
     todoPriority.textContent = 'Low Priority';
   }
   todoPriority.addEventListener('click', () => {
-    if (todo.priority == true) {
+    if (todo.priority === true) {
       todoPriority.style.backgroundColor = 'green';
       todoPriority.textContent = 'Low Priority';
       todo.priority = false;

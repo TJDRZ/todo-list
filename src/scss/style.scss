@@ -1,0 +1,176 @@
+/* Variables */
+$accent-color: red;
+$light-green: rgba(195, 235, 149, 0.863);
+$dark-green: rgb(136, 196, 67);
+
+/* Mixins */
+@mixin flex-container($direction, $justify, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: wrap;
+  justify-content: $justify;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin delete-button() {
+  padding: 0.5rem;
+  font-weight: bold;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+/* Global */
+:root,
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  line-height: 1.5rem;
+}
+
+body {
+  background-image: url('../assets/doodles.png');
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* Header */
+header {
+  @include flex-container(column, center, 1rem);
+  padding: 2rem 0;
+  border: solid $accent-color;
+
+  h1 {
+    padding: 2rem;
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 3rem;
+    background-color: white;
+  }
+
+  hr {
+    width: 100%;
+    color: $accent-color;
+  }
+
+  #project-button,
+  #todo-button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.2rem;
+    background-color: $light-green;
+    border: solid $dark-green;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 1);
+  }
+
+  #project-button:hover,
+  #todo-button:hover {
+    box-shadow: none;
+  }
+}
+
+/* Main */
+main {
+  @include flex-container(row, center, 0.5rem);
+  padding: 0.5rem;
+}
+
+/* Main Container */
+#main-container {
+  display: flex;
+  border: solid $dark-green;
+  background-color: $light-green;
+
+  /* Projects */
+  #project-container {
+    padding: 0.5rem;
+    border: solid $dark-green;
+
+    li {
+      @include flex-container(row, space-between, 0.5rem);
+      padding: 0.5rem;
+    }
+
+    li:hover {
+      color: purple;
+      cursor: pointer;
+    }
+
+    .project-delete {
+      @include delete-button();
+    }
+
+    .selected {
+      background-color: $dark-green;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  /* Todos */
+  #todo-container {
+    @include flex-container(row, center, 1rem);
+    padding: 0.5rem;
+    border: solid $dark-green;
+
+    .todo {
+      @include flex-container(column, center, 0.5rem);
+      padding: 0.5rem;
+      border: dashed $accent-color;
+      border-radius: 10%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .todo:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+    }
+
+    .todo-delete {
+      align-self: flex-end;
+      @include delete-button();
+    }
+
+    h2:hover {
+      color: purple;
+      cursor: pointer;
+    }
+
+    .todo-priority-button {
+      padding: 0.2rem;
+      color: yellow;
+      border: none;
+      border-radius: 0.2rem;
+    }
+
+    .description {
+      background-color: $light-green;
+      border: solid $dark-green;
+    }
+
+    .description:hover {
+      box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+/* Forms */
+#form-container {
+  @include flex-container(column, center, 0.5rem);
+
+  form {
+    @include flex-container(column, center, 0.5rem);
+    padding: 0.5rem;
+    border: solid $accent-color;
+    background-color: white;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}

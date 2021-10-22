@@ -11,7 +11,7 @@ Usage:
 - Projects:
     - Create projects in the left list
     - Click on the project title to look at the todos of project / set project as current project for todo creation
-    - DEL button to delete adjacent project
+    - X button to delete adjacent project
 - Todos:
     - Todos created will appear right inside of the currently selected project
     - X button to delete

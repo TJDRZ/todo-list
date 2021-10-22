@@ -1,6 +1,7 @@
 import { defaultStart } from './components/UI';
 import { projectFolder, retrieveSave } from './components/projects';
-import './assets/styles/style.css';
+import './css/reset.css';
+import './css/style.css';
 
 (function saveCheck() {
   retrieveSave();
