@@ -10,6 +10,13 @@ import {
   setCurrentProject,
 } from './projects';
 
+// form display:none / flex "hiding/visibility" helper
+const formHider = (form) => {
+  window.getComputedStyle(form).display === 'none'
+    ? (form.style.display = 'flex')
+    : (form.style.display = 'none');
+};
+
 // dynamically change todo container contents on different project selection
 const dynamicTodoContainer = (project) => {
   // clear container
@@ -40,11 +47,11 @@ const projectForm = document.querySelector('#project-form');
 const projectFormSubmit = document.querySelector('#project-form-submit');
 
 newProjectButton.addEventListener('click', () => {
-  projectForm.classList.toggle('visible');
+  formHider(projectForm);
 });
 
 projectFormSubmit.addEventListener('click', () => {
-  projectForm.classList.toggle('visible');
+  formHider(projectForm);
   const project = createProject(document.querySelector('#project-title').value);
   projectListItem(project);
   projectAdd(project);
@@ -84,11 +91,11 @@ const todoForm = document.querySelector('#todo-form');
 const todoFormSubmit = document.querySelector('#todo-form-submit');
 
 newTodoButton.addEventListener('click', () => {
-  todoForm.classList.toggle('visible');
+  formHider(todoForm);
 });
 
 todoFormSubmit.addEventListener('click', () => {
-  todoForm.classList.toggle('visible');
+  formHider(todoForm);
   const todo = createTodo(
     document.querySelector('#priority').checked,
     document.querySelector('#title').value,

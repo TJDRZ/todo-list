@@ -164,13 +164,6 @@ main {
     padding: 0.5rem;
     border: solid $accent-color;
     background-color: white;
+    display: none;
   }
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
 }

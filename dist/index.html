@@ -17,19 +17,13 @@
             </span>
         </header>
         <main>
-            <section id="main-container">
-                <div id="project-container">
-                    <ul id="project-list"></ul>
-                </div>
-                <div id="todo-container"></div>
-            </section>
             <section id="form-container">
-                <form class="hidden" id="project-form">
+                <form id="project-form">
                     <label>Title (Max 25 Characters):</label>
                     <input id="project-title" type="text" maxlength="25">
                     <button id="project-form-submit" type="button">Submit</button>
                 </form>
-                <form class="hidden" id="todo-form">
+                <form id="todo-form">
                     <label>Priority?</label>
                     <input id="priority" type="checkbox">
                     <label>Title (Max 25 Characters):</label>
@@ -40,6 +34,12 @@
                     <input id="due-date" type="date">
                     <button id="todo-form-submit" type="button">Submit</button>
                 </form>
+            </section>
+            <section id="main-container">
+                <div id="project-container">
+                    <ul id="project-list"></ul>
+                </div>
+                <div id="todo-container"></div>
             </section>
         </main>
         <script src="main.js"></script>
