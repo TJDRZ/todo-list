@@ -1,3 +1,4 @@
+import { TodoType, ProjectType } from './objects';
 import { complete, undoComplete } from './complete';
 import { createProject, createTodo } from './creation';
 import {
@@ -11,16 +12,16 @@ import {
 } from './projects';
 
 // form display:none / flex "hiding/visibility" helper
-const formHider = (form) => {
+const formHider = (form: HTMLFormElement) => {
   window.getComputedStyle(form).display === 'none'
     ? (form.style.display = 'flex')
     : (form.style.display = 'none');
 };
 
 // dynamically change todo container contents on different project selection
-const dynamicTodoContainer = (project) => {
+const dynamicTodoContainer = (project: ProjectType) => {
   // clear container
-  while (todoContainer.firstElementChild) {
+  while (todoContainer?.firstElementChild) {
     todoContainer.removeChild(todoContainer.firstElementChild);
   }
   // fill container
@@ -30,7 +31,7 @@ const dynamicTodoContainer = (project) => {
 };
 
 // set active project list item
-const setActiveLi = (li) => {
+const setActiveLi = (li: HTMLLIElement) => {
   li.classList.add('selected');
 };
 
@@ -41,18 +42,25 @@ const resetActiveLi = () => {
 };
 
 // Projects
-const newProjectButton = document.querySelector('#project-button');
-const projectList = document.querySelector('#project-list');
-const projectForm = document.querySelector('#project-form');
-const projectFormSubmit = document.querySelector('#project-form-submit');
+const newProjectButton = document.querySelector(
+  '#project-button'
+) as HTMLButtonElement;
+const projectList = document.querySelector('#project-list') as HTMLUListElement;
+const projectForm = document.querySelector('#project-form') as HTMLFormElement;
+const projectFormSubmit = document.querySelector(
+  '#project-form-submit'
+) as HTMLButtonElement;
 
 newProjectButton.addEventListener('click', () => {
   formHider(projectForm);
 });
 
 projectFormSubmit.addEventListener('click', () => {
+  const projectTitle = document.querySelector(
+    '#project-title'
+  ) as HTMLInputElement;
   formHider(projectForm);
-  const project = createProject(document.querySelector('#project-title').value);
+  const project = createProject(projectTitle.value);
   projectListItem(project);
   projectAdd(project);
   setCurrentProject(project);
@@ -60,7 +68,7 @@ projectFormSubmit.addEventListener('click', () => {
   save(projectFolder);
 });
 
-const projectListItem = (project) => {
+const projectListItem = (project: ProjectType) => {
   const newProjectListItem = document.createElement('li');
   resetActiveLi();
   setActiveLi(newProjectListItem);
@@ -85,29 +93,39 @@ const projectListItem = (project) => {
 };
 
 // Todos
-const newTodoButton = document.querySelector('#todo-button');
-const todoContainer = document.querySelector('#todo-container');
-const todoForm = document.querySelector('#todo-form');
-const todoFormSubmit = document.querySelector('#todo-form-submit');
+const newTodoButton = document.querySelector(
+  '#todo-button'
+) as HTMLButtonElement;
+const todoContainer = document.querySelector(
+  '#todo-container'
+) as HTMLDivElement;
+const todoForm = document.querySelector('#todo-form') as HTMLFormElement;
+const todoFormSubmit = document.querySelector(
+  '#todo-form-submit'
+) as HTMLButtonElement;
 
 newTodoButton.addEventListener('click', () => {
   formHider(todoForm);
 });
 
 todoFormSubmit.addEventListener('click', () => {
+  const priority = document.querySelector('#priority') as HTMLInputElement;
+  const title = document.querySelector('#priority') as HTMLInputElement;
+  const description = document.querySelector('#priority') as HTMLInputElement;
+  const dueDate = document.querySelector('#priority') as HTMLInputElement;
   formHider(todoForm);
   const todo = createTodo(
-    document.querySelector('#priority').checked,
-    document.querySelector('#title').value,
-    document.querySelector('#description').value,
-    document.querySelector('#due-date').value
+    priority.checked,
+    title.value,
+    description.value,
+    dueDate.value
   ); // aka everything in the todo form
   todoItem(todo);
   addTodoToCurrentProject(todo);
   save(projectFolder);
 });
 
-const todoItem = (todo) => {
+const todoItem = (todo: TodoType) => {
   // card
   const newTodoCard = document.createElement('div');
   newTodoCard.classList.add('todo');

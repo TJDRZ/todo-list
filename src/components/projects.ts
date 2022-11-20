@@ -1,12 +1,13 @@
+import { TodoType, ProjectType } from './objects';
 import { createProject } from './creation';
 import { projectListItem, todoItem } from './UI';
 
 // grand project array
-let projectFolder = [];
+let projectFolder: ProjectType[] = [];
 
-const projectAdd = (project) => projectFolder.push(project);
+const projectAdd = (project: ProjectType) => projectFolder.push(project);
 
-const projectRemove = (project) => {
+const projectRemove = (project: ProjectType) => {
   const index = projectFolder.indexOf(project);
   projectFolder.splice(index, 1);
 };
@@ -14,17 +15,17 @@ const projectRemove = (project) => {
 // current project
 let currentProject = createProject('currentProject');
 
-const setCurrentProject = (project) => (currentProject = project);
+const setCurrentProject = (project: ProjectType) => (currentProject = project);
 
-const addTodoToCurrentProject = (todo) => currentProject.todos.push(todo);
+const addTodoToCurrentProject = (todo: TodoType) => currentProject.todos.push(todo);
 
-const removeTodoFromCurrentProject = (todo) => {
+const removeTodoFromCurrentProject = (todo: TodoType) => {
   const index = currentProject.todos.indexOf(todo);
   currentProject.todos.splice(index, 1);
 };
 
 // Save
-const save = (projectFolder) => {
+const save = (projectFolder: ProjectType[]) => {
   localStorage.setItem('projectFolder', JSON.stringify(projectFolder));
 };
 
