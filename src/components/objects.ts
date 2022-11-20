@@ -1,10 +1,10 @@
-interface TodoType  {
+interface TodoType {
   priority: boolean;
   title: string;
   description: string;
   dueDate: string;
   complete: boolean;
-};
+}
 
 interface ProjectType {
   title: string;
@@ -31,7 +31,7 @@ class Todo implements TodoType {
   }
 }
 
-class Project implements ProjectType{
+class Project implements ProjectType {
   title: string;
   todos: TodoType[];
   constructor(title: string) {

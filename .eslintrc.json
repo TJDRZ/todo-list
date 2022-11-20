@@ -7,7 +7,6 @@
         "airbnb", 
         "prettier"
     ],
-    "plugins": ["prettier"],
     "parserOptions": {
         "ecmaVersion": 12,
         "sourceType": "module"

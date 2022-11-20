@@ -1,6 +1,6 @@
-import { TodoType, ProjectType } from './objects';
-import { createProject } from './creation';
-import { projectListItem, todoItem } from './UI';
+import { TodoType, ProjectType } from "./objects";
+import { createProject } from "./creation";
+import { projectListItem, todoItem } from "./UI";
 
 // grand project array
 let projectFolder: ProjectType[] = [];
@@ -13,11 +13,12 @@ const projectRemove = (project: ProjectType) => {
 };
 
 // current project
-let currentProject = createProject('currentProject');
+let currentProject = createProject("currentProject");
 
 const setCurrentProject = (project: ProjectType) => (currentProject = project);
 
-const addTodoToCurrentProject = (todo: TodoType) => currentProject.todos.push(todo);
+const addTodoToCurrentProject = (todo: TodoType) =>
+  currentProject.todos.push(todo);
 
 const removeTodoFromCurrentProject = (todo: TodoType) => {
   const index = currentProject.todos.indexOf(todo);
@@ -26,12 +27,12 @@ const removeTodoFromCurrentProject = (todo: TodoType) => {
 
 // Save
 const save = (projectFolder: ProjectType[]) => {
-  localStorage.setItem('projectFolder', JSON.stringify(projectFolder));
+  localStorage.setItem("projectFolder", JSON.stringify(projectFolder));
 };
 
 // Retrieve
 const retrieveSave = () => {
-  const savedProjectFolder = localStorage.getItem('projectFolder');
+  const savedProjectFolder = localStorage.getItem("projectFolder");
   if (savedProjectFolder && savedProjectFolder.length) {
     projectFolder = JSON.parse(savedProjectFolder);
     if (projectFolder.length >= 1) {

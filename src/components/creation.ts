@@ -1,4 +1,4 @@
-import { Project, Todo } from './objects';
+import { Project, Todo } from "./objects";
 
 const createProject = (title: string) => {
   const newProject = new Project(title);
